@@ -20,6 +20,8 @@ services:
     image: phpmyadmin
     ports:
       - 8080:80
+    depends_on:
+      - "mysql"
     environment: 
       - PMA_ARBITRARY=1
     networks:
@@ -30,6 +32,8 @@ services:
     image: wordpress
     ports: 
       - 80:80
+    depends_on:
+      - "mysql"
     environment: 
       - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
       - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
